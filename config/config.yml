@@ -1,0 +1,11 @@
+BATCH_SIZE                  : 8
+N_CPU                       : 8
+IMAGE_SIZW                  : 416
+
+MODEL_DEF                   : config/yolov3.cfg
+DATA_CONFIG                 : config/coco.data
+WEIGHTS_PATH                : weights/yolov3.weights
+CLASS_PATH                  : data/coco.names
+IOU_THRES                   : 0.5
+CONF_THRES                  : 0.001
+NMS_THRES                   : 0.5

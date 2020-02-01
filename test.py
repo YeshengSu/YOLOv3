@@ -1,6 +1,9 @@
 from __future__ import division
 
+from shutil import copyfile
+
 from models import *
+from utils.config import Config
 from utils.utils import *
 from utils.datasets import *
 from utils.parse_config import *
@@ -58,6 +61,7 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    # parser.add_argument('--path', type=str, default='./config', help='model checkpoints path (default: ./checkpoints)')
     parser.add_argument("--batch_size", type=int, default=8, help="size of each image batch")
     parser.add_argument("--model_def", type=str, default="config/yolov3.cfg", help="path to model definition file")
     parser.add_argument("--data_config", type=str, default="config/coco.data", help="path to data config file")
@@ -70,6 +74,20 @@ if __name__ == "__main__":
     parser.add_argument("--img_size", type=int, default=416, help="size of each image dimension")
     opt = parser.parse_args()
     print(opt)
+
+    # cfg_path = opt.path
+    # config_path = os.path.join(cfg_path, 'config.yml')
+    #
+    # # create checkpoints path if does't exist
+    # if not os.path.exists(cfg_path):
+    #     os.makedirs(cfg_path)
+    #
+    # # copy config template if does't exist
+    # if not os.path.exists(config_path):
+    #     copyfile('./config.yml.example', config_path)
+    #
+    # # load config file
+    # config = Config(config_path)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
