@@ -10,3 +10,7 @@ backup
 weights/*.weights
 __pycache__
 checkpoints
+
+.idea/
+
+weights/darknet53.conv.74
